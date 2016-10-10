@@ -25,10 +25,10 @@ services:
  frontend:
   image: node:latest
   working_dir: /app
-  command: node_modules/.bin/nodemon /app/index.js
+  command: npm start
   container_name: frontend
   expose:
-   - "8080"
+   - "3000"
   volumes:
    - ./frontend:/app
   environment:
