@@ -9,9 +9,11 @@ services:
    - /var/run/docker.sock:/tmp/docker.sock:ro
   environment:
    - DEFAULT_HOST=www.*
+
  backend:
   image: node:latest
-  command: node /app
+  working_dir: /app
+  command: node_modules/.bin/nodemon /app/index.js
   container_name: backend
   expose:
    - "8000"
@@ -19,9 +21,11 @@ services:
    - ./backend:/app
   environment:
    - VIRTUAL_HOST=api.*
+
  frontend:
   image: node:latest
-  command: node /app
+  working_dir: /app
+  command: node_modules/.bin/nodemon /app/index.js
   container_name: frontend
   expose:
    - "8080"
