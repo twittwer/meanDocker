@@ -11,6 +11,7 @@ node_modules
 
 # Caches
 .npm
+*.swp
 
 # REPL
 .node_repl_history

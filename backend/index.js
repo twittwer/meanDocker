@@ -6,8 +6,7 @@ var io = require('socket.io')(http);
 var port = 8000;
 
 app.get('/', function(req, res){
-  //res.sendFile(path.resolve(__dirname + '/../client/index.html'));
-  res.send('Backend - It  works!');
+  res.send('Backend - It works!');
 });
 
 io.on('connection', function(socket){
