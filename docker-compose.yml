@@ -13,7 +13,7 @@ services:
  backend:
   image: node:latest
   working_dir: /app
-  command: node_modules/.bin/nodemon /app/index.js
+  command: node_modules/.bin/nodemon -L /app/index.js
   container_name: backend
   expose:
    - "8000"
