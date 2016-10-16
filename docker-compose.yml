@@ -19,12 +19,12 @@ services:
  backend:
   image: node:latest
   working_dir: /app
-  command: bash -c "npm -v && npm start"
+  command: bash -c "node -v && npm -v && npm start"
   container_name: backend
   links:
    - mongodb
   expose:
-   - "8042"
+   - "3000"
   volumes:
    - ./ts-node:/app
   environment:
@@ -33,7 +33,7 @@ services:
  frontend:
   image: node:latest
   working_dir: /app
-  command: bash -c "npm -v && npm start"
+  command: bash -c "node -v && npm -v && npm start"
   container_name: frontend
   expose:
    - "3000"

@@ -12,6 +12,8 @@ typings
 
 # Builds
 build
+./frontend/app/**/*.js
+./frontend/app/**/*.js.map
 
 # Caches
 .npm

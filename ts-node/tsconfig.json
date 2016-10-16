@@ -12,6 +12,8 @@
     "noEmitOnError": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
+    // debug
+    "listFiles": false,
     // clean up
     "removeComments": true
   },
