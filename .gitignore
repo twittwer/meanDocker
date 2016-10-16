@@ -8,6 +8,10 @@ npm-debug.log*
 
 # Dependencies
 node_modules
+typings
+
+# Builds
+build
 
 # Caches
 .npm
@@ -18,3 +22,4 @@ node_modules
 
 # Application Data
 data/db/*
+!data/db/index.json

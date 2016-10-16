@@ -19,21 +19,21 @@ services:
  backend:
   image: node:latest
   working_dir: /app
-  command: node_modules/.bin/nodemon -L /app/index.js
+  command: bash -c "npm -v && npm start"
   container_name: backend
   links:
    - mongodb
   expose:
-   - "8000"
+   - "8042"
   volumes:
-   - ./backend:/app
+   - ./ts-node:/app
   environment:
    - VIRTUAL_HOST=api.*
 
  frontend:
   image: node:latest
   working_dir: /app
-  command: npm start
+  command: bash -c "npm -v && npm start"
   container_name: frontend
   expose:
    - "3000"

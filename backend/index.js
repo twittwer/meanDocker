@@ -4,7 +4,7 @@ var http = require('http').Server(app);
 //var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 
-var port = 8000;
+var port = 8042;
 
 var dbURI = 'mongodb://mongodb/app';
 mongoose.connect(dbURI);
