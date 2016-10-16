@@ -10,11 +10,19 @@ services:
   environment:
    - DEFAULT_HOST=www.*
 
+ mongodb:
+  image: mongo:latest
+  container_name: mongodb
+  volumes:
+   - ./data/db:/data/db
+
  backend:
   image: node:latest
   working_dir: /app
   command: node_modules/.bin/nodemon -L /app/index.js
   container_name: backend
+  links:
+   - mongodb
   expose:
    - "8000"
   volumes:
