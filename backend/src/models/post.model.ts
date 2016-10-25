@@ -1,6 +1,6 @@
 import * as Mongoose from "mongoose";
 
-export interface IPost extends Mongoose.Document {
+export interface Post extends Mongoose.Document {
   _id: string;
   title: string;
   text: string;
@@ -18,4 +18,4 @@ let postSchema: Mongoose.Schema = new Mongoose.Schema({
   }
 });
 
-export const Post = Mongoose.model<IPost>('Post', postSchema);
+export const PostModel = Mongoose.model<Post>('Post', postSchema);

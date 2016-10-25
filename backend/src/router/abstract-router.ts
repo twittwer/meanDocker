@@ -1,16 +1,16 @@
-import * as Express from "express";
+import * as express from "express";
 
 abstract class AbstractRouter {
-  protected _router: Express.Router;
+  protected _router: express.Router;
 
   constructor() {
-    this._router = Express.Router();
+    this._router = express.Router();
     this.configure();
   }
 
   abstract configure(): void;
 
-  public getRouter(): Express.Router {
+  public getRouter(): express.Router {
     return this._router;
   }
 }
