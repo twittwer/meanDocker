@@ -1,7 +1,6 @@
-import * as Mongoose from "mongoose";
+import * as Mongoose from 'mongoose';
 
 export interface Post extends Mongoose.Document {
-  _id: string;
   title: string;
   text: string;
   author: string;
