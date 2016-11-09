@@ -17,15 +17,17 @@
         console.error(err);
       });
     </script>
+    <!---->
+    <script>
+      var BACKEND = 'http://api.local/';
+      //var socketImport = document.createElement('script');
+      //socketImport.setAttribute('src',BACKEND+'socket.io/socket.io.js');
+      //document.head.appendChild(socketImport);
+    </script>
   </head>
   <!-- 3. Display the application -->
   <body>
     <my-app>Loading...</my-app>
-    <script src="http://api.localhost/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io('http://api.local/');
-      socket.emit('register', { username: 'twittwer' + Date.now() });
-    </script>
   </body>
 </html>
 
