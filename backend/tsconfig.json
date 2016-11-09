@@ -5,26 +5,24 @@
     // compiling
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    // checking
+    // code checks
     "noEmitOnError": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     // debug
     "sourceMap": true,
     //    "inlineSourceMap": true,
-    //    "listFiles": true,
     // clean up
-    "removeComments": true
+    "removeComments": true,
+    "newLine": "LF"
   },
   "include": [
-    "src/**/*",
-    // to define ES6 Promises
-    "typings/**/*"
+    "src/**/*", "typings/**/*"
   ],
   "exclude": [
-    "build",
-    "node_modules"
+    "node_modules", "build"
   ]
 }

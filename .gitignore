@@ -12,8 +12,6 @@ typings
 
 # Builds
 build
-frontend/app/**/*.js
-frontend/app/**/*.js.map
 
 # Caches
 .npm
@@ -23,5 +21,4 @@ frontend/app/**/*.js.map
 .node_repl_history
 
 # Application Data
-data/db/*
-!data/db/index.json
+data/db

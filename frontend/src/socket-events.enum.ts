@@ -3,6 +3,5 @@ export enum BackendEmittedEvent {
 }
 
 export enum FrontendEmittedEvent {
-  Login,
-  Logout
+  Login, Logout
 }

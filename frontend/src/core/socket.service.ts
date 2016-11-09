@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import * as io from 'socket.io-client';
+import { BackendEmittedEvent, FrontendEmittedEvent } from '../socket-events.enum';
 import Socket = SocketIOClient.Socket;
-import { BackendEmittedEvent, FrontendEmittedEvent } from "../socket-events.enum";
 import Emitter = SocketIOClient.Emitter;
 
 declare var BACKEND: string;

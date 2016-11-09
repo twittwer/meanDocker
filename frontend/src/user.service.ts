@@ -5,7 +5,7 @@ export class UserService {
   // private username: string;
 
   /* Init */
-  constructor() {
+  constructor () {
     // this.username = null;
   }
 }
