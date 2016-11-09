@@ -1,11 +1,12 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SocketService } from './socket.service';
+import { UserService } from './user.service';
 
 @NgModule( {
   imports     : [],
   exports     : [],
   declarations: [],
-  providers   : [ SocketService ],
+  providers   : [ SocketService, UserService ],
 } )
 export class CoreModule {
 

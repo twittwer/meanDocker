@@ -10,8 +10,13 @@ export class SocketService {
   public backendUrl = BACKEND;
   protected socket: Socket;
 
+
+  /*
+   * TODO: Manage Socket Connection
+   * - check synchronicity of connection establishment
+   * - retries in case of connection errors
+   */
   constructor () {
-    // TODO: check synchronicity of connection establishment
     // this.socket = io.connect( this.backendUrl );
   }
 
@@ -23,8 +28,8 @@ export class SocketService {
       throw new Error();
     }
 
-    // return this.socket.on( eventString, listener );
     // TODO: save listener to reconfigure after disconnect
+    // return this.socket.on( eventString, listener );
   }
 
   public emit ( event: FrontendEmittedEvent ): SocketService {
@@ -34,13 +39,8 @@ export class SocketService {
       throw new Error();
     }
 
+    // TODO: queue emitted events, if needed (have a look at synchronicity of connection)
     // this.socket.emit( eventString );
-    // TODO: have a look after synchronicity check (queuing?)
     return this;
   }
-
-  /*
-   * TODO: Manage Socket Reconnects
-   * - retries in case of connection errors
-   */
 }
