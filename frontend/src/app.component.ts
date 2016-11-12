@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SocketService } from './core/socket.service';
-import { BackendEmittedEvent, FrontendEmittedEvent } from './socket-events.enum';
+import { BackendEmittedEvent, FrontendEmittedEvent } from './shared/sockets/socket-events.enum';
 import { UserService } from './core/user.service';
 
 @Component( {

@@ -9,6 +9,8 @@ npm-debug.log*
 # Dependencies
 node_modules
 typings
+frontend/src/shared/*
+backend/src/shared/*
 
 # Builds
 build
