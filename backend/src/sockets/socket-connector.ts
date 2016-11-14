@@ -4,44 +4,51 @@ export interface Socket extends SocketServer {
   username?: string;
 }
 
-type RegisterCallback = (socket: Socket) => void;
+type RegisterCallback = ( socket: Socket ) => void;
 
 export class SocketConnector {
   private socketServer: Socket;
-  private registerCallbacks: RegisterCallback[];
+  private registerCallbacks: RegisterCallback[] = [];
   private connectedSockets: { [key: string]: Socket } = {};
 
-  constructor(socketServer: Socket, registerCallback: RegisterCallback | RegisterCallback[]) {
+  constructor ( socketServer: Socket, registerCallback: RegisterCallback | RegisterCallback[] ) {
     this.socketServer = socketServer;
-    if (registerCallback instanceof Array)
-      this.registerCallbacks = registerCallback;
-    else
-      this.registerCallbacks = [ registerCallback ];
+
+    if ( registerCallback instanceof Array ) {
+      this.registerCallbacks = <RegisterCallback[]>registerCallback;
+    } else {
+      this.registerCallbacks.push( <RegisterCallback>registerCallback );
+    }
+
     this.configure();
   }
 
-  private configure(): void {
+  private configure (): void {
 
-    this.socketServer.on('connection', (socket: Socket) => {
+    this.socketServer.on( 'connection', ( socket: Socket ) => {
 
-      socket.on('register', (data: any) => {
+      /* question
+       * TODO: extract user management
+       * Maybe separate registerCallbacks and connectionCallbacks
+       */
+      socket.on( 'register', ( data: any ) => {
         this.connectedSockets[ data.username ] = socket;
         socket.username = data.username;
 
-        console.log(`
-            \n >> client registration: ${data.username} <<
-            \n   >> ${JSON.stringify(data)}
-            \n   >> socket list: ${Object.keys(this.connectedSockets)}
-            \n`);
+        console.log( `>> new socket registration: ${data.username}` );
+        console.log( `>> socket list: ${Object.keys( this.connectedSockets )}` );
 
-        this.registerCallbacks.forEach((callback: RegisterCallback) => callback(socket));
-      });
+        this.registerCallbacks.forEach( ( callback: RegisterCallback ) => callback( socket ) );
+      } );
 
-      socket.on('disconnect', () => {
-        if (socket.username)
+      socket.on( 'disconnect', () => {
+        if ( socket.username ) {
           delete this.connectedSockets[ socket.username ];
-      });
-    });
+        }
+      } );
+
+      socket.emit( 'connected' );
+    } );
   }
 }
 
