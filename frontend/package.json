@@ -2,11 +2,17 @@
   "name": "meanDocker-frontend",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "typings install",
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" "
   },
-  "author": "Tobias Wittwer",
+  "author": {
+    "name": "Tobias Wittwer",
+    "email": "t.wittwer95@gmail.com>"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twittwer/meanDocker.git"
+  },
   "dependencies": {
     "@angular/common": "~2.0.2",
     "@angular/compiler": "~2.0.2",
@@ -17,9 +23,7 @@
     "@angular/platform-browser-dynamic": "~2.0.2",
     "@angular/router": "~3.0.2",
     "@angular/upgrade": "~2.0.2",
-    "@types/socket.io-client": "^1.4.28",
     "angular-in-memory-web-api": "~0.1.5",
-    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
@@ -28,9 +32,11 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "typescript": "^2.0.3",
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
-    "typescript": "^2.0.3",
-    "typings": "^1.4.0"
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.46",
+    "@types/socket.io-client": "^1.4.28"
   }
 }
