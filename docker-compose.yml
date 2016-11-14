@@ -21,14 +21,18 @@ services:
  backend:
   image: node:latest
   working_dir: /app
-  command: bash -c "npm install && npm start"
+  command: bash -c "npm install -q && npm start"
   container_name: backend
+  depends_on:
+   - nginx-proxy
+   - mongodb
   links:
    - mongodb
   expose:
    - "3000"
   volumes:
    - ./backend:/app
+   - ./shared:/shared
   environment:
    - VIRTUAL_HOST=api.*
    - VIRTUAL_PORT=3000
@@ -36,14 +40,18 @@ services:
  frontend:
   image: node:latest
   working_dir: /app
-  command: bash -c "npm install && npm start"
+  command: bash -c "npm install -q && npm start"
   container_name: frontend
+  depends_on:
+   - nginx-proxy
+   - backend
   expose:
    - "3000"
   ports:
    - "8042:3001"
   volumes:
    - ./frontend:/app
+   - ./shared:/shared
   environment:
    - VIRTUAL_HOST=www.*
    - VIRTUAL_PORT=3000
