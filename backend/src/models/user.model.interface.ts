@@ -20,8 +20,8 @@ export class UserModelConfig implements ModelConfig {
 
   static setMethods ( userSchema: Mongoose.Schema ): void {
 
-    userSchema.methods.forgotPassword = function ( username: string ): UserModel {
-      return this.find( { username: username } );
-    };
+    userSchema.method( 'forgotPassword', function (): boolean {
+      return true;
+    } );
   }
 }

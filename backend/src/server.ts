@@ -13,7 +13,7 @@ export class Server {
   private app: express.Application;
   private port: number;
 
-  constructor ( port: number, dbURI: string ) {
+  private constructor ( port: number, dbURI: string ) {
     this.port = port;
 
     this.app = express();
@@ -22,7 +22,7 @@ export class Server {
     this.configureMongoDB( dbURI );
     this.configureExpress();
     this.configureRouter();
-    this.configureSockets();
+    // this.configureSockets();
   }
 
   public static bootstrap ( port: number = 3000, dbURI: string = 'mongodb://mongodb/app' ): Server {
@@ -40,7 +40,7 @@ export class Server {
     mongoose.connection.on( 'error', ( err: any ) => console.log( `Mongoose connection error: ${err.toString()}` ) );
     mongoose.connection.on( 'disconnected', () => console.log( `Mongoose disconnected from ${dbURI}` ) );
 
-    mongoose.Promise = Promise;
+    mongoose.Promise = global.Promise;
   }
 
   private configureExpress (): void {
@@ -50,7 +50,7 @@ export class Server {
 
   private configureRouter (): void {
     //noinspection TypeScriptValidateTypes
-    this.app.use( '/', new RootRouter().getRouter() );
+    this.app.use( '/', (new RootRouter).get() );
   }
 
   private configureSockets (): void {

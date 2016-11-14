@@ -1,12 +1,19 @@
 import * as express from 'express';
 import AbstractRouter from './abstract-router';
+import UserRouter from './user.router';
 
 export default class RootRouter extends AbstractRouter {
-  configure (): void {
+  protected configure (): void {
 
-    // this._router.use( '/users', new PostRouter().getRouter() );
+    //noinspection TypeScriptValidateTypes
+    this.router.use( '/users', (new UserRouter).get() );
 
-    this._router.get( '/', ( req: express.Request, res: express.Response ) => {
+    this.router.get( '/', ( req: express.Request, res: express.Response ) => {
+      res.status( 200 )
+        .send( {
+          router  : 'RootRouter',
+          children: [ 'users' ]
+        } );
     } );
   }
 }
