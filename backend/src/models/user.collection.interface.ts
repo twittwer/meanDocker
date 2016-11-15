@@ -10,13 +10,8 @@ export class UserCollectionConfig implements CollectionConfig {
 
   static setMethods ( userSchema: Mongoose.Schema ): void {
 
-    // Question: Direct assignments (UserModelConfig) vs HashMap (UserCollectionConfig)
-    let staticMethods: {[name: string]: Function} = {};
-
-    staticMethods[ 'findByUsername' ] = function ( username: string ): Promise<UserModel> {
+    userSchema.static( 'findByUsername', function ( username: string ): Promise<UserModel> {
       return this.findOne( { username: username } );
-    };
-
-    userSchema.static( staticMethods );
+    } );
   }
 }
